@@ -1,6 +1,6 @@
-defmodule Ecto.LocaleStringTest do
+defmodule Ecto.Type.LocaleStringTest do
   use ExUnit.Case
-  alias Ecto.LocaleString
+  alias Ecto.Type.LocaleString
 
   test "cast binary" do
     assert LocaleString.cast("Test") == {:ok, %{Application.get_env(:ecto_locale_string, :default_locale) => "Test"}}

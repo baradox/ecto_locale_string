@@ -1,10 +1,10 @@
-defmodule Ecto.LocaleString do
+defmodule Ecto.Type.LocaleString do
   @moduledoc"""
   Support for locale string type for ecto
   """
   @behaviour Ecto.Type
 
-  def type, do: :locale_string
+  def type, do: {:map, :string}
 
   @doc """
   Handle casting to

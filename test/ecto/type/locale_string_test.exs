@@ -21,6 +21,6 @@ defmodule Ecto.Type.LocaleStringTest do
   end
 
   test "dump map with atom as key" do
-    assert LocaleString.dump(%{en: "Test"}) == :error
+    assert LocaleString.dump(%{en: "Test"}) == {:ok, %{"en" => "Test"}}
   end
 end

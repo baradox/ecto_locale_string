@@ -35,16 +35,9 @@ defmodule Ecto.Type.LocaleString do
   Convert to %{string => string} format
   """
   def dump(term) when is_map(term) do
-    Enum.reduce_while(term, nil, fn
-      {key, value}, nil when is_binary(key) and is_binary(value) -> {:cont, nil}
-      {_, _}, _ -> {:halt, do_dump(term)}
+    Enum.reduce(term, nil, fn
+      {key, value}, nil when is_binary(key) and is_binary(value) -> nil
+      _, _  -> :error
     end) || {:ok, term}
-  end
-
-  defp do_dump(term) when is_map(term) do
-    {:ok, Enum.reduce(term, Map.new, fn
-      {key, value}, map when is_binary(key) and is_binary(value) -> Map.put(map, key, value)
-      {key, value}, map -> Map.put(map, to_string(key), to_string(value))
-    end)}
   end
 end
